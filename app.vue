@@ -13,16 +13,16 @@ const isDark = computed({
 </script>
 <template>
   <div class="h-screen flex items-center justify-center relative">
-    <div class="w-full p-10 md:p-40 pt-10 pb-10 flex justify-end items-center gap-x-5 absolute top-0">
+    <div class="w-full p-10 md:p-40 md:pt-10 md:pb-10 flex justify-end items-center gap-x-5 absolute top-0">
       <div class="text-sm cursor-pointer transition-all hover:text-primary-500" @click="isOpen = true">
         个人简历</div>
       <UButton :icon="isDark ? 'i-heroicons-moon-20-solid' : 'i-heroicons-sun-20-solid'" color="gray" variant="ghost"
         aria-label="Theme" @click="isDark = !isDark" />
     </div>
     <div
-      class="w-[600px] max-w-[600px] max-h-[400px] h-[400px rounded-lg p-4 flex flex-col items-end justify-center px-16">
-      <div class="w-32 h-32 md:w-36 md:h-36 bg-neutral-400 rounded-full blur-2xl"></div>
-      <div class="w-full h-full flex flex-col gap-4">
+      class="w-[600px] max-w-[600px] max-h-[400px] h-[400px rounded-lg p-4 flex flex-col items-end justify-center px-16 relative">
+      <div class="w-32 h-32 md:w-36 md:h-36 bg-neutral-400 rounded-full blur-2xl absolute top-[-32px] right-0 z-0"></div>
+      <div class="w-full h-full flex flex-col gap-4 relative z-10">
         <div class="text-4xl text-left self-start font-black">学习</div>
         <div class="gap-2">
           <div class="text-3xl">人生得一知己足矣，</div>
