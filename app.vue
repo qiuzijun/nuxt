@@ -13,7 +13,7 @@ const isDark = computed({
 </script>
 <template>
   <div class="h-screen flex items-center justify-center relative">
-    <div class="w-full p-40 pt-10 pb-10 flex justify-end items-center gap-x-5 absolute top-0">
+    <div class="w-full p-10 md:p-40 pt-10 pb-10 flex justify-end items-center gap-x-5 absolute top-0">
       <div class="text-sm cursor-pointer transition-all hover:text-primary-500" @click="isOpen = true">
         个人简历</div>
       <UButton :icon="isDark ? 'i-heroicons-moon-20-solid' : 'i-heroicons-sun-20-solid'" color="gray" variant="ghost"
@@ -55,7 +55,7 @@ const isDark = computed({
         </div>
       </template>
       <div class="h-max flex justify-center items-center ">
-        <div class="w-2/3 min-h-full">
+        <div class="w-full md:w-2/3 min-h-full">
           <Resume />
         </div>
       </div>
