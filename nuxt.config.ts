@@ -7,8 +7,11 @@ export default defineNuxtConfig({
       viewport: 'width=device-width, initial-scale=1'
     }
   },
+
   colorMode: {
     preference: 'light'
   },
-  modules: ['@nuxt/ui']
+
+  modules: ['@nuxt/ui'],
+  compatibilityDate: '2024-08-01'
 })
