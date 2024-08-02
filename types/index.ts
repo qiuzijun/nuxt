@@ -8,3 +8,10 @@ export interface Sentence {
     zh: SentenceItem;
     en: SentenceItem;
 }
+interface Userinfo {
+    username: string;
+}
+export interface UserCookie {
+    userinfo: Userinfo,
+    token: string
+}

@@ -1,6 +1,11 @@
 <script setup lang="ts">
+import type { UserCookie } from '~/types/index'
 const isOpen = ref<Boolean>(false);
 const colorMode = useColorMode();
+const config = useRuntimeConfig();
+const cookie = useCookie<UserCookie | null>('userinfo', {
+    domain: config.public.domain
+});
 const tabs = [
     {
         text: '个人简历',
@@ -17,6 +22,15 @@ const isDark = computed({
         colorMode.preference = colorMode.value === 'dark' ? 'light' : 'dark'
     }
 })
+const login = () => {
+    fetch('/api/login').then(res => res.json()).then(res => {
+        cookie.value = res.data;
+
+    })
+}
+const logout = () => {
+    cookie.value = null;
+}
 </script>
 <template>
     <div class="w-full p-10 md:p-40 md:pt-10 md:pb-10 flex justify-end items-center gap-x-5 absolute top-0">
@@ -25,6 +39,9 @@ const isDark = computed({
             {{ item.text }}</div>
         <UButton :icon="isDark ? 'i-heroicons-moon-20-solid' : 'i-heroicons-sun-20-solid'" color="gray" variant="ghost"
             aria-label="Theme" @click="isDark = !isDark" />
+        {{ cookie?.userinfo.username }}
+        <UButton @click="login" v-if="!cookie">登录</UButton>
+        <UButton @click="logout" v-else>退出登录</UButton>
     </div>
     <UModal v-model="isOpen" fullscreen>
         <UCard :ui="{

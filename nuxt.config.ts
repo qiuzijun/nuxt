@@ -13,5 +13,10 @@ export default defineNuxtConfig({
   },
 
   modules: ['@nuxt/ui'],
+  runtimeConfig:{
+    public:{
+      domain:process.env.DOMAIN
+    }
+  },
   compatibilityDate: '2024-08-01'
 })
