@@ -14,6 +14,7 @@ export default defineNuxtConfig({
 
   modules: ['@nuxt/ui'],
   runtimeConfig:{
+    domain:'.qiuzijun.cn',
     public:{
       domain:process.env.DOMAIN
     }

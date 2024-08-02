@@ -4,9 +4,9 @@ const isOpen = ref<Boolean>(false);
 const colorMode = useColorMode();
 const config = useRuntimeConfig();
 const cookie = useCookie<UserCookie | null>('userinfo', {
-    domain: config.public.domain
+    domain: config.domain
 });
-console.log(config.public.domain);
+console.log(config.domain);
 
 const tabs = [
     {
