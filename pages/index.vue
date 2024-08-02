@@ -1,13 +1,9 @@
 <script setup lang="ts">
 import { ref } from 'vue';
 import type { Sentence } from "../types/index"
-const data = ref<Sentence>();
-fetch('/api/sentence').then(res => {
-    return res.json()
-}).then(res => {
-    data.value = res.data;
-
-})
+const result = ref<Sentence | null>()
+const { data } = await useFetch('/api/sentence');
+result.value = data.value?.data
 </script>
 <template>
     <div class="h-screen flex items-center justify-center relative">
@@ -18,16 +14,16 @@ fetch('/api/sentence').then(res => {
                 class="w-32 h-32 md:w-36 md:h-36 bg-neutral-400 rounded-full blur-2xl absolute top-[-32px] right-0 z-0">
             </div>
             <div class="w-full h-full flex flex-col gap-4 relative z-10">
-                <div class="text-4xl text-left self-start font-black">{{ data?.title }}</div>
+                <div class="text-4xl text-left self-start font-black">{{ result?.title }}</div>
                 <div class="gap-2">
-                    <div class="text-3xl">{{ data?.zh.after }}</div>
-                    <div class="text-3xl">{{ data?.zh.before }}</div>
+                    <div class="text-3xl">{{ result?.zh.after }}</div>
+                    <div class="text-3xl">{{ result?.zh.before }}</div>
                 </div>
                 <div class="gap-2">
-                    <div class="text-lg">{{ data?.en.after }}</div>
-                    <div class="text-lg">{{ data?.en.after }}</div>
+                    <div class="text-lg">{{ result?.en.after }}</div>
+                    <div class="text-lg">{{ result?.en.after }}</div>
                 </div>
-                <div class="text-xl flex justify-end">——{{ data?.zh.author }}</div>
+                <div class="text-xl flex justify-end">——{{ result?.zh.author }}</div>
             </div>
         </div>
     </div>
