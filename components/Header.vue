@@ -6,6 +6,8 @@ const config = useRuntimeConfig();
 const cookie = useCookie<UserCookie | null>('userinfo', {
     domain: config.public.domain
 });
+console.log(config.public.domain);
+
 const tabs = [
     {
         text: '个人简历',
