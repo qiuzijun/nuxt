@@ -16,7 +16,7 @@ export default defineNuxtConfig({
   runtimeConfig:{
     domain:'.qiuzijun.cn',
     public:{
-      domain:process.env.DOMAIN
+      domain:process.env.NUXT_DOMAIN
     }
   },
   compatibilityDate: '2024-08-01'

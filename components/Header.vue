@@ -3,10 +3,11 @@ import type { UserCookie } from '~/types/index'
 const isOpen = ref<Boolean>(false);
 const colorMode = useColorMode();
 const config = useRuntimeConfig();
+console.log(config);
+
 const cookie = useCookie<UserCookie | null>('userinfo', {
     domain: '.qiuzijun.cn'
 });
-console.log('.qiuzijun.cn');
 
 const tabs = [
     {
