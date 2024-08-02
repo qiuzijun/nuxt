@@ -4,9 +4,9 @@ const isOpen = ref<Boolean>(false);
 const colorMode = useColorMode();
 const config = useRuntimeConfig();
 const cookie = useCookie<UserCookie | null>('userinfo', {
-    domain: config.domain
+    domain: '.qiuzijun.cn'
 });
-console.log(config.domain);
+console.log('.qiuzijun.cn');
 
 const tabs = [
     {
