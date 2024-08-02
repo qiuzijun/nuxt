@@ -6,7 +6,7 @@ const config = useRuntimeConfig();
 console.log(config);
 
 const cookie = useCookie<UserCookie | null>('userinfo', {
-    domain: '.qiuzijun.cn'
+    domain: config.public.domain
 });
 
 const tabs = [

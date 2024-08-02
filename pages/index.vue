@@ -21,7 +21,7 @@ result.value = data.value?.data
                 </div>
                 <div class="gap-2">
                     <div class="text-lg">{{ result?.en.after }}</div>
-                    <div class="text-lg">{{ result?.en.after }}</div>
+                    <div class="text-lg">{{ result?.en.before }}</div>
                 </div>
                 <div class="text-xl flex justify-end">——{{ result?.zh.author }}</div>
             </div>
