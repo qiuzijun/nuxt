@@ -1,14 +1,16 @@
 <script setup lang="ts">
 import type { UserCookie } from '~/types/index'
 const isOpen = ref<Boolean>(false);
+const loading = ref<Boolean>(false);
+const route = useRoute();
+const toast = useToast();
 const colorMode = useColorMode();
 const config = useRuntimeConfig();
-console.log(config);
+// console.log(config);
 
 const cookie = useCookie<UserCookie | null>('userinfo', {
     domain: config.public.domain
 });
-
 const tabs = [
     {
         text: '个人简历',
@@ -25,14 +27,19 @@ const isDark = computed({
         colorMode.preference = colorMode.value === 'dark' ? 'light' : 'dark'
     }
 })
-const login = () => {
-    fetch('/api/login').then(res => res.json()).then(res => {
-        cookie.value = res.data;
+const login = async () => {
+    loading.value = true;
+    const { data } = await useFetch('/api/user/login');
+    cookie.value = data.value?.data as UserCookie;
+    toast.add({ title: '登陆成功' })
+    loading.value = false;
 
-    })
 }
 const logout = () => {
+    loading.value = true;
     cookie.value = null;
+    toast.add({ title: '退出成功' })
+    loading.value = false;
 }
 </script>
 <template>
@@ -42,7 +49,7 @@ const logout = () => {
             {{ item.text }}</div>
         <UButton :icon="isDark ? 'i-heroicons-moon-20-solid' : 'i-heroicons-sun-20-solid'" color="gray" variant="ghost"
             aria-label="Theme" @click="isDark = !isDark" />
-        {{ cookie?.userinfo.username }}
+        {{ cookie?.user.username }}
         <UButton @click="login" v-if="!cookie">登录</UButton>
         <UButton @click="logout" v-else>退出登录</UButton>
     </div>

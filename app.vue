@@ -3,4 +3,5 @@
 </script>
 <template>
   <NuxtPage />
+  <UNotifications />
 </template>

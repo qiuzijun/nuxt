@@ -9,9 +9,13 @@ export interface Sentence {
     en: SentenceItem;
 }
 interface Userinfo {
+    id: string;
     username: string;
+    email: string;
+    avatar: string;
+    birthdate: string;
 }
 export interface UserCookie {
-    userinfo: Userinfo,
+    user: Userinfo,
     token: string
 }

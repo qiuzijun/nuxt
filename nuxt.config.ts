@@ -1,8 +1,8 @@
-// https://nuxt.com/docs/api/configuration/nuxt-config
+import config from './config'
 export default defineNuxtConfig({
-  app:{
-    head:{
-      title:'qiuzijun blog',
+  app: {
+    head: {
+      title: 'qiuzijun blog',
       charset: 'utf-8',
       viewport: 'width=device-width, initial-scale=1'
     }
@@ -13,9 +13,9 @@ export default defineNuxtConfig({
   },
 
   modules: ['@nuxt/ui'],
-  runtimeConfig:{
-    public:{
-      domain:process.env.NUXT_DOMAIN
+  runtimeConfig: {
+    public: {
+      ...config
     }
   },
   compatibilityDate: '2024-08-01'
